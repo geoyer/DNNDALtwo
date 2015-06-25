@@ -1,0 +1,4 @@
+C:\inetpub\wwwroot\DNN732-2014-08-30\bin\DNNDAL2.dll
+C:\inetpub\wwwroot\DNN732-2014-08-30\bin\DNNDAL2.pdb
+C:\inetpub\wwwroot\DNN732-2014-08-30\DesktopModules\DNNDAL2\obj\Release\DNNDAL2.dll
+C:\inetpub\wwwroot\DNN732-2014-08-30\DesktopModules\DNNDAL2\obj\Release\DNNDAL2.pdb
