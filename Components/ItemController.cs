@@ -94,7 +94,7 @@ namespace Christoc.Modules.DNNDAL2.Components
                 var sorted = ctx.GetRepository<Item>();
 
                 //t = sorted.Find("WHERE CountryCode = 'AFG'").OrderBy(x => x.Name);
-                t = sorted.Get().OrderBy(x => x.Name);
+                t = sorted.Get().OrderBy(x => x.Population);
 
                 
 
