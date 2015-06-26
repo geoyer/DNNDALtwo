@@ -20,6 +20,8 @@ namespace Christoc.Modules.DNNDAL2
                 int cityIdQS = Convert.ToInt32(Request.QueryString["cityID"]);
 
                 Label1.Text = tc.GetCity(cityIdQS).Name;
+
+                Label2.Text = tc.GetCity(cityIdQS).Population.ToString();
                 
                 //rptItemList.DataSource = tc.GetCity(cityIdQS);
                 //rptItemList.DataBind();
