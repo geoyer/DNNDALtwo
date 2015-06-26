@@ -93,11 +93,22 @@ namespace Christoc.Modules.DNNDAL2.Components
                 //VERSION 2 - LINQ Controls / Sorting - Added By AB
                 var sorted = ctx.GetRepository<Item>();
 
-                //t = sorted.Find("WHERE ID > 0").OrderBy(x => x.Name);
+                //t = sorted.Find("WHERE CountryCode = 'AFG'").OrderBy(x => x.Name);
                 t = sorted.Get().OrderBy(x => x.Name);
 
                 
 
+            }
+            return t;
+        }
+
+        public Item GetCity(int cityID)
+        {
+            Item t;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<Item>();
+                t = rep.GetById(cityID);
             }
             return t;
         }

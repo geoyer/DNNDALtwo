@@ -12,6 +12,7 @@
 
 using System;
 using DotNetNuke.Entities.Modules;
+using DotNetNuke.Services.Exceptions;
 
 namespace Christoc.Modules.DNNDAL2
 {
@@ -28,5 +29,71 @@ namespace Christoc.Modules.DNNDAL2
             }
 
         }
+
+        protected void GetModule()
+        {
+            try
+            {
+
+                string controlKey;
+                if (Request.Params["cid"] == null)
+                {
+                    controlKey = "List";
+                }
+                else
+                    controlKey = Request.Params["cid"];
+
+                string mPath = getModulePath(ModuleId, TabId, controlKey);
+                var objModule = (PortalModuleBase)this.LoadControl(mPath);
+
+                objModule.ModuleConfiguration = this.ModuleConfiguration;
+
+                objModule.LocalResourceFile = this.LocalResourceFile.Replace("Dispatch", controlKey);
+                this.Controls.Add(objModule);
+            }
+
+            catch (Exception ex)
+            {
+                Exceptions.ProcessModuleLoadException(this, ex);
+            }
+
+
+        }
+
+
+
+
+
+
+
+        private string getModulePath(int moduleid, int tabid, string controlKey)
+        {
+            string path = String.Empty;
+            try
+            {
+                ModuleController mc = new ModuleController();
+                ModuleControlController mcc = new ModuleControlController();
+
+                ModuleInfo mi = mc.GetModule(moduleid, tabid);
+                if (mi != null)
+                {
+                    var mControl = ModuleControlController.GetModuleControlByControlKey(controlKey, mi.ModuleDefID);
+                    if (mControl != null)
+                        path = "~/" + mControl.ControlSrc;
+                }
+            }
+            catch (Exception ex)
+            {
+                Exceptions.ProcessModuleLoadException(this, ex);
+            }
+            return path;
+
+        }
+
+
+
+
     }
+
+
 }

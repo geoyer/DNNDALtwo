@@ -3,3 +3,7 @@ C:\inetpub\wwwroot\DNN732-2014-08-30\bin\DNNDAL2.pdb
 C:\inetpub\wwwroot\DNN732-2014-08-30\DesktopModules\DNNDAL2\obj\Debug\DNNDAL2.csprojResolveAssemblyReference.cache
 C:\inetpub\wwwroot\DNN732-2014-08-30\DesktopModules\DNNDAL2\obj\Debug\DNNDAL2.dll
 C:\inetpub\wwwroot\DNN732-2014-08-30\DesktopModules\DNNDAL2\obj\Debug\DNNDAL2.pdb
+C:\inetpub\wwwroot\DNN733-2014-10-02\bin\DNNDAL2.dll
+C:\inetpub\wwwroot\DNN733-2014-10-02\bin\DNNDAL2.pdb
+C:\inetpub\wwwroot\DNN733-2014-10-02\DesktopModules\DNNDAL2\obj\Debug\DNNDAL2.dll
+C:\inetpub\wwwroot\DNN733-2014-10-02\DesktopModules\DNNDAL2\obj\Debug\DNNDAL2.pdb
