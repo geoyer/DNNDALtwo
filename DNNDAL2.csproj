@@ -63,6 +63,8 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\City.cs" />
+    <Compile Include="Components\CityController.cs" />
     <Compile Include="Components\Country.cs" />
     <Compile Include="Components\CountryController.cs" />
     <Compile Include="Components\FeatureController.cs" />

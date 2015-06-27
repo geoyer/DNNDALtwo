@@ -1,5 +1,29 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Details.ascx.cs" Inherits="Christoc.Modules.DNNDAL2.Details" %>
 
-<h1>Welcome to the Details Page</h1>
-<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-<asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+
+<div class="row">
+
+    <div class="col-md-6">
+        <h1 id="MainTitle" runat="server">Country Name</h1>
+
+        <asp:Repeater ID="rptCities" runat="server">
+            <ItemTemplate>
+                <h3>
+                    <%#DataBinder.Eval(Container.DataItem,"Name").ToString() %>
+                </h3>
+            </ItemTemplate>
+        </asp:Repeater>
+
+    </div>
+
+    <div class="col-md-6">
+        <asp:Literal ID="CountryMap" runat="server"></asp:Literal>
+    </div>
+
+
+</div>
+
+
+
+
+
