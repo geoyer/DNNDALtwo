@@ -1,29 +1,42 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="List.ascx.cs" Inherits="Christoc.Modules.DNNDAL2.List" %>
 
+<%--Added To Allow Stylesheet of Flags to be added--%>
+<%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.Client.ClientResourceManagement" Assembly="DotNetNuke.Web.Client" %>
+<dnn:DnnCssInclude runat="server" FilePath="~/DesktopModules/DNNDAL2/Resources/Flags/css/flag-icon.min.css" />
+
+
+
 <h1>Listing Page</h1>
-<asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
-<asp:Repeater ID="rptItemList" runat="server" OnItemDataBound="rptItemListOnItemDataBound" OnItemCommand="rptItemListOnItemCommand">
+
+<link href="Resources/Flags/css/flag-icon.min.css" rel="stylesheet" />
+
+
+
+
+<asp:Literal ID="Literal1" runat="server"></asp:Literal>
+
+
+<hr />
+<asp:Repeater ID="rptItemList" runat="server">
     <HeaderTemplate>
         <div class="row">
     </HeaderTemplate>
 
     <ItemTemplate>
-        <div class="col-md-4">
+        <div class="col-md-3">
+
+            <a href="/Modules/cid/Details/CountryID/<%#DataBinder.Eval(Container.DataItem,"Code").ToString() %>">
+            <div style="width:100%; height:200px;" class="img-thumbnail flag flag-icon-background flag-icon-<%#DataBinder.Eval(Container.DataItem,"Code2").ToString().ToLower()%>">
+
+            </div>
+
             <h3>
-                <a href="/Modules/cid/Details/cityId/<%#DataBinder.Eval(Container.DataItem,"ID").ToString() %>">
-
+                
                     <asp:Label ID="lblitemName" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Name").ToString() %>' />
-                </a>
-
-
-
+               
             </h3>
-            <asp:Label ID="lblItemDescription" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Population").ToString() %>' CssClass="tm_td" />
+ </a>
 
-            <asp:Panel ID="pnlAdmin" runat="server" Visible="false">
-                <asp:HyperLink ID="lnkEdit" runat="server" ResourceKey="EditItem.Text" Visible="false" Enabled="false" />
-                <asp:LinkButton ID="lnkDelete" runat="server" ResourceKey="DeleteItem.Text" Visible="false" Enabled="false" CommandName="Delete" />
-            </asp:Panel>
         </div>
     </ItemTemplate>
     <FooterTemplate>

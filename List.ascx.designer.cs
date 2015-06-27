@@ -13,13 +13,13 @@ namespace Christoc.Modules.DNNDAL2 {
     public partial class List {
         
         /// <summary>
-        /// Button1 control.
+        /// Literal1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Literal Literal1;
         
         /// <summary>
         /// rptItemList control.

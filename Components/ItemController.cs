@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using DotNetNuke.Data;
 
 
-//This Must Be added
+//This Must Be added to allow for sorting / complex queries of the model.
 using System.Linq;
 
 

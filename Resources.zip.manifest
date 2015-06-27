@@ -2,11 +2,19 @@
   <files>
     <file>
       <path />
+      <name>Details.ascx</name>
+    </file>
+    <file>
+      <path />
       <name>Edit.ascx</name>
     </file>
     <file>
       <path />
       <name>License.txt</name>
+    </file>
+    <file>
+      <path />
+      <name>List.ascx</name>
     </file>
     <file>
       <path />

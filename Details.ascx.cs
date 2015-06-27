@@ -15,16 +15,11 @@ namespace Christoc.Modules.DNNDAL2
         {
             try
             {
-                var tc = new ItemController();
+                var countryCont = new CountryController();
 
-                int cityIdQS = Convert.ToInt32(Request.QueryString["cityID"]);
+                string CountryIdQS = Request.QueryString["CountryID"];
 
-                Label1.Text = tc.GetCity(cityIdQS).Name;
-
-                Label2.Text = tc.GetCity(cityIdQS).Population.ToString();
-                
-                //rptItemList.DataSource = tc.GetCity(cityIdQS);
-                //rptItemList.DataBind();
+                Label1.Text = countryCont.GetCountry(CountryIdQS).Name;
             }
             catch (Exception exc) //Module failed to load
             {
