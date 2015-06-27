@@ -18,7 +18,7 @@ namespace Christoc.Modules.DNNDAL2
             {
                 //New "Countries" Code by AB
                 var countryCont = new CountryController();
-                rptItemList.DataSource = countryCont.GetCountries();
+                rptItemList.DataSource = countryCont.GetCountriesSorted("Population");
                 rptItemList.DataBind();
 
                 //string CountryID = "AFG";

@@ -28,5 +28,7 @@ namespace Christoc.Modules.DNNDAL2.Components
         public string Code2 { get; set; }
 
         public string Name { get; set; }
+
+        public int Population { get; set; }
     }
 }

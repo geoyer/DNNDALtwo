@@ -27,7 +27,8 @@ namespace Christoc.Modules.DNNDAL2.Components
             {
                 var rep = ctx.GetRepository<City>();
                 cities = rep.Get()
-                        .Where(x => x.CountryCode == CountryCode);
+                        .Where(x => x.CountryCode == CountryCode)
+                        .OrderByDescending(x => x.Population);
             }
             return cities;
         }

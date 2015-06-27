@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 
 //Required Additions to Base class;
@@ -21,6 +20,35 @@ namespace Christoc.Modules.DNNDAL2.Components
             {
                 var rep = ctx.GetRepository<Country>();
                 countries = rep.Get().OrderBy(t => t.Name);
+            }
+            return countries;
+        }
+
+        public IEnumerable<Country> GetCountriesSorted(string SortByColumn)
+        {
+            IEnumerable<Country> countries;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+
+                var rep = ctx.GetRepository<Country>();
+
+                //Creates a function which is conditionally set by the string that is passed... It is later used to sort in a "OrderBy" LINQ Query
+                Func<Country, Object> orderByFunc = null;
+
+                if (SortByColumn == "Name")
+                {
+                    orderByFunc = t => t.Name;
+                }
+                else if (SortByColumn == "Population")
+                {
+                    orderByFunc = t => t.Population;
+                }
+
+                //Now go off and get the Countries, and Order them by the Function Created Above.
+                countries = rep.Get().OrderByDescending(orderByFunc);
+
+
+
             }
             return countries;
         }
