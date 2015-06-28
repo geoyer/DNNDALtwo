@@ -16,30 +16,32 @@ namespace Christoc.Modules.DNNDAL2
         {
             try
             {
-                //New "Countries" Code by AB
-                var countryCont = new CountryController();
-                rptItemList.DataSource = countryCont.GetCountriesSorted("Population");
-                rptItemList.DataBind();
-
-                //string CountryID = "AFG";
-                Literal1.Text = countryCont.GetCountry("AFG").Name;
-
+                LoadCountries("Name", true);
             }
             catch (Exception exc) //Module failed to load
             {
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
         }
-
-
-       
-
-
         
-
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void ddlCountrySort_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Response.Redirect(DotNetNuke.Common.Globals.NavigateURL("", String.Format("cid={0}&tid={1}", "Details", this.TabId)));
+           
         }
+
+        public void LoadCountries(string sortValue, bool LowestFirst)
+        {
+            //New "Countries" Code by AB
+            var countryCont = new CountryController();
+            rptItemList.DataSource = countryCont.GetCountriesSorted(sortValue,LowestFirst);
+            rptItemList.DataBind();
+        }
+
+        protected void btnSort_Click(object sender, EventArgs e)
+        {
+            LoadCountries(ddlCountrySort.SelectedValue, Convert.ToBoolean(ddlCountrySortDirection.SelectedValue));
+        }
+
+
     }
 }

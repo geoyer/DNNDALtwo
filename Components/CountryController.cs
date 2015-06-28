@@ -24,7 +24,7 @@ namespace Christoc.Modules.DNNDAL2.Components
             return countries;
         }
 
-        public IEnumerable<Country> GetCountriesSorted(string SortByColumn)
+        public IEnumerable<Country> GetCountriesSorted(string SortByColumn, bool LowestFirst)
         {
             IEnumerable<Country> countries;
             using (IDataContext ctx = DataContext.Instance())
@@ -32,9 +32,11 @@ namespace Christoc.Modules.DNNDAL2.Components
 
                 var rep = ctx.GetRepository<Country>();
 
-                //Creates a function which is conditionally set by the string that is passed... It is later used to sort in a "OrderBy" LINQ Query
+                //Creates an object which is conditionally set by the string that is passed... It is later used to sort in a "OrderBy" LINQ Query
                 Func<Country, Object> orderByFunc = null;
 
+
+                //Define the columns that can be selected for sorting
                 if (SortByColumn == "Name")
                 {
                     orderByFunc = t => t.Name;
@@ -44,8 +46,17 @@ namespace Christoc.Modules.DNNDAL2.Components
                     orderByFunc = t => t.Population;
                 }
 
-                //Now go off and get the Countries, and Order them by the Function Created Above.
-                countries = rep.Get().OrderByDescending(orderByFunc);
+                //Define the direcion the columns will be sorted
+
+                if (LowestFirst == true)
+                {
+                    countries = rep.Get().OrderBy(orderByFunc);
+                }
+                else //High To Low
+                {
+                    countries = rep.Get().OrderByDescending(orderByFunc);
+                }
+                
 
 
 
