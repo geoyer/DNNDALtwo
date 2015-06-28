@@ -77,5 +77,18 @@ namespace Christoc.Modules.DNNDAL2.Components
             return country;
 
         }
+
+
+        public IEnumerable<Country> SearchForCountries(string query)
+        {
+            IEnumerable<Country> countries;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<Country>();
+                countries = rep.Find("WHERE Name LIKE  '%"+query+"%';") // The % mean that it "looks" either side of the value searched.. %stan% = Afganistan, Pakistan etc
+                    .OrderBy(t => t.Name);
+            }
+            return countries;
+        }
     }
 }

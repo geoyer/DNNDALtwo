@@ -25,6 +25,10 @@ namespace Christoc.Modules.DNNDAL2
 
                 //Layout the Data
                 MainTitle.InnerText = country.Name;
+
+                //Load Flag
+                DetailsFlag.Attributes.Add("class", "img-responsive center-block flag flag-icon-background flag-icon-" + country.Code2.ToLower());
+
                 //Load the Map (Had to use Literal as editing Iframe src caused errors due to Framework version???
                 CountryMap.Text = @"<iframe id='CountryMap' runat='server' width='100%' height='450'
                             src='https://www.google.com/maps/embed/v1/place?q=" + country.Name + "&key=AIzaSyDHPO6bNG225SK_Jnohf4xQtC-1Ew4V-Ec'></iframe>";

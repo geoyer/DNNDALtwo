@@ -3,7 +3,7 @@
 
 <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-8">
         <h1 id="MainTitle" runat="server">Country Name</h1>
 
         <asp:Repeater ID="rptCities" runat="server">
@@ -36,7 +36,13 @@
 
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
+
+       
+                    <div id="DetailsFlag" runat="server" style="width: 100%; height: 200px;">
+                    </div>
+               
+
         <asp:Literal ID="CountryMap" runat="server"></asp:Literal>
     </div>
 

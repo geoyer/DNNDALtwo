@@ -98,6 +98,13 @@
       <DependentUpon>List.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchResults.ascx.cs">
+      <DependentUpon>SearchResults.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchResults.ascx.designer.cs">
+      <DependentUpon>SearchResults.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Settings.ascx.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -622,6 +629,7 @@
     <Content Include="Resources\Flags\flags\4x3\za.svg" />
     <Content Include="Resources\Flags\flags\4x3\zm.svg" />
     <Content Include="Resources\Flags\flags\4x3\zw.svg" />
+    <Content Include="SearchResults.ascx" />
     <Content Include="Settings.ascx" />
     <Content Include="View.ascx" />
   </ItemGroup>

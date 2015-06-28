@@ -1,25 +1,36 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="List.ascx.cs" Inherits="Christoc.Modules.DNNDAL2.List" %>
 
-<%--Added To Allow Stylesheet of Flags to be added--%>
-<%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.Client.ClientResourceManagement" Assembly="DotNetNuke.Web.Client" %>
-<dnn:DnnCssInclude runat="server" FilePath="~/DesktopModules/DNNDAL2/Resources/Flags/css/flag-icon.min.css" />
 
 
+<h1>Countries Of The World</h1>
 
-<h1>Listing Page</h1>
+<div class="row">
+
+    <div class="col-md-6">
+
+        <h4>Sort</h4>
+        <asp:DropDownList ID="ddlCountrySort" runat="server" OnSelectedIndexChanged="ddlCountrySort_SelectedIndexChanged">
+            <asp:ListItem>Name</asp:ListItem>
+            <asp:ListItem>Population</asp:ListItem>
+        </asp:DropDownList>
+
+        <asp:DropDownList ID="ddlCountrySortDirection" runat="server">
+            <asp:ListItem Value="True">Ascending</asp:ListItem>
+            <asp:ListItem Value="False">Descending</asp:ListItem>
+        </asp:DropDownList>
+
+        <asp:Button ID="btnSort" runat="server" Text="Sort" OnClick="btnSort_Click" />
+    </div>
 
 
-<asp:DropDownList ID="ddlCountrySort" runat="server" OnSelectedIndexChanged="ddlCountrySort_SelectedIndexChanged">
-    <asp:ListItem>Name</asp:ListItem>
-    <asp:ListItem>Population</asp:ListItem>
-</asp:DropDownList>
+    <div class="col-md-6">
+        <h4>Search</h4>
+        <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+        <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
+    </div>
 
-<asp:DropDownList ID="ddlCountrySortDirection" runat="server">
-    <asp:ListItem Value="True">Ascending</asp:ListItem>
-    <asp:ListItem Value="False">Descending</asp:ListItem>
-</asp:DropDownList>
+</div>
 
-<asp:Button ID="btnSort" runat="server" Text="Sort" OnClick="btnSort_Click" />
 
 <hr />
 <asp:Repeater ID="rptItemList" runat="server">
@@ -32,22 +43,26 @@
 
             <div class="thumbnail">
 
-                <div style="width: 100%; height: 200px;" class="img-responsive center-block flag flag-icon-background flag-icon-<%#DataBinder.Eval(Container.DataItem,"Code2").ToString().ToLower()%>">
-                </div>
+                <a href="<%# DotNetNuke.Entities.Tabs.TabController.CurrentPage.FullUrl +"/cid/Details/CountryID/"+ DataBinder.Eval(Container.DataItem,"Code").ToString() %>">
+                    <div style="width: 100%; height: 200px;" class="img-responsive center-block flag flag-icon-background flag-icon-<%#DataBinder.Eval(Container.DataItem,"Code2").ToString().ToLower()%>">
+                    </div>
+                </a>
 
-                <a href="/Modules/cid/Details/CountryID/<%#DataBinder.Eval(Container.DataItem,"Code").ToString() %>">
-                    <h3><asp:Label ID="lblitemName" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Name").ToString() %>' /></h3>
+                <a href="<%# DotNetNuke.Entities.Tabs.TabController.CurrentPage.FullUrl +"/cid/Details/CountryID/"+ DataBinder.Eval(Container.DataItem,"Code").ToString() %>">
+                    <h3>
+                        <asp:Label ID="lblitemName" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Name").ToString() %>' />
+
+                    </h3>
                 </a>
 
                 <p>Population: <%# String.Format("{0:N0}", DataBinder.Eval(Container.DataItem,"Population"))%></p>
 
+                <a href="<%# DotNetNuke.Entities.Tabs.TabController.CurrentPage.FullUrl +"/cid/Details/CountryID/"+ DataBinder.Eval(Container.DataItem,"Code").ToString() %>" class="btn btn-primary" role="button">Read More...</a>
 
-                <a href="/Modules/cid/Details/CountryID/<%#DataBinder.Eval(Container.DataItem,"Code").ToString() %>" class="btn btn-primary" role="button">Read More...</a>
-
-
-            </div>
 
             </div>
+
+        </div>
     </ItemTemplate>
     <FooterTemplate>
         </div>
